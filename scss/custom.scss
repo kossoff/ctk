@@ -18,7 +18,7 @@
  * - Layout: Macro arrangement of a web page, including any grid systems.
  * - Component: Dictate minor layout modules or reusable elements.
  * - State: Describe the appearance of a module in various states.
- * - Theme: Purely visual optional styling (“look-and-feel”) for a component.
+ * - Theme: Purely visual optional styling ("look-and-feel") for a component.
  *
  * For more information about this new Drupal css file standard, please review
  * the following:
@@ -59,45 +59,50 @@
 // @import "components/buttons";
 // @import "components/type";
 // @import "components/forms";
-
-// Note about using Foundation Icons.
-// The "components/icons" partial is required for the icon sets to work.
-//@import "components/icons";
-//@import "components/icons-accessibility";
-//@import "components/icons-general";
-//@import "components/icons-general_enclosed";
-//@import "components/icons-social";
+@import "components/foundation-icons";
 
 // Themes
 // @import "theme/button-light";
 
-@import "theme/flatui";
+// IE8 Grid Support
+@import "ie";
+
+$footer-height: 100px;
 
 body {
   line-height: 1.231;
   color: #34495e;
   background-color: #ffffff;
-}
-ul.title-area {
-  li.name{
-    background: $pomegranate;
-  }
-}
-/*header {
-    .contain-to-grid {
-        @include background (linear-gradient(0deg, #be0344, #be0344 0.88%, rgba(229, 70, 127, 0.91) 0.881%, #e5467f));
-        .top-bar,
-        .top-bar-section ul,
-        .top-bar-section li a {
-            background: none !important;
-        }
-    }
-}
-*/
-.field-name-field-tags {
-  ul {
-    @extend .inline-list !optional;
-  }
+
+  ul.title-area {
+     li.name h1 a {
+       background: $pomegranate;
+     }
+   }
+
+   .field-name-field-image {
+      float: left;
+      margin-right: 1em;
+   }
+
+   .field-name-field-tags {
+      ul {
+         @extend .inline-list !optional;
+      }
+   }
+
+   .footer {
+      background: $clouds;
+   }
+
+   footer {
+      background: $silver;
+
+      .copyright {
+         font-size: 90%;
+         margin: 1em;
+      }
+   }
 }
 
 article {
@@ -106,3 +111,52 @@ article {
   }
 }
 
+/*
+   Sticky Footer Solution
+   by Steve Hatcher
+   http://stever.ca
+   http://www.cssstickyfooter.com
+*/
+
+* {margin:0;padding:0;}
+
+/* must declare 0 margins on everything, also for main layout components use padding, not
+vertical margins (top and bottom) to add spacing, else those margins get added to total height
+and your footer gets pushed down a bit more, creating vertical scroll bars in the browser */
+
+html, body {height: 100%;}
+
+.page {min-height: 100%;}
+
+.wrapper-main {
+   overflow:auto;
+   padding-bottom: $footer-height;
+}  /* must be same height as the footer */
+
+footer {
+   position: relative;
+   margin-top: -$footer-height; /* negative value of footer height */
+   height: $footer-height;
+   clear:both;
+}
+
+/*Opera Fix*/
+body:before {/* thanks to Maleika (Kohoutec)*/
+   content:"";
+   height:100%;
+   float:left;
+   width:0;
+   margin-top:-32767px;/* thank you Erik J - negate effect of float*/
+}
+
+/* IMPORTANT
+
+You also need to include this conditional style in the <head> of your HTML file to feed this style to IE 6 and lower and 8 and higher.
+
+<!--[if !IE 7]>
+  <style type="text/css">
+    #wrap {display:table;height:100%}
+  </style>
+<![endif]-->
+
+*/

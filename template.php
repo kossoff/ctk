@@ -4,7 +4,7 @@
  * Implements template_preprocess_html().
  *
  */
-//function STARTER_preprocess_html(&$variables) {
+//function ctk_preprocess_html(&$variables) {
 //  // Add conditional CSS for IE. To use uncomment below and add IE css file
 //  drupal_add_css(path_to_theme() . '/css/ie.css', array('weight' => CSS_THEME, 'browsers' => array('!IE' => FALSE), 'preprocess' => FALSE));
 //
@@ -16,20 +16,20 @@
  * Implements template_preprocess_page
  *
  */
-//function STARTER_preprocess_page(&$variables) {
+//function ctk_preprocess_page(&$variables) {
 //}
 
 /**
  * Implements template_preprocess_node
  *
  */
-//function STARTER_preprocess_node(&$variables) {
+//function ctk_preprocess_node(&$variables) {
 //}
 
 /**
  * Implements hook_preprocess_block()
  */
-//function STARTER_preprocess_block(&$variables) {
+//function ctk_preprocess_block(&$variables) {
 //  // Add wrapping div with global class to all block content sections.
 //  $variables['content_attributes_array']['class'][] = 'block-content';
 //
@@ -69,28 +69,28 @@
 //  }
 //}
 
-//function STARTER_preprocess_views_view(&$variables) {
+//function ctk_preprocess_views_view(&$variables) {
 //}
 
 /**
  * Implements template_preprocess_panels_pane().
  *
  */
-//function STARTER_preprocess_panels_pane(&$variables) {
+//function ctk_preprocess_panels_pane(&$variables) {
 //}
 
 /**
  * Implements template_preprocess_views_views_fields().
  *
  */
-//function STARTER_preprocess_views_view_fields(&$variables) {
+//function ctk_preprocess_views_view_fields(&$variables) {
 //}
 
 /**
  * Implements theme_form_element_label()
  * Use foundation tooltips
  */
-//function STARTER_form_element_label($variables) {
+//function ctk_form_element_label($variables) {
 //  if (!empty($variables['element']['#title'])) {
 //    $variables['element']['#title'] = '<span class="secondary label">' . $variables['element']['#title'] . '</span>';
 //  }
@@ -103,7 +103,7 @@
 /**
  * Implements hook_preprocess_button().
  */
-//function STARTER_preprocess_button(&$variables) {
+//function ctk_preprocess_button(&$variables) {
 //  $variables['element']['#attributes']['class'][] = 'button';
 //  if (isset($variables['element']['#parents'][0]) && $variables['element']['#parents'][0] == 'submit') {
 //    $variables['element']['#attributes']['class'][] = 'secondary';
@@ -114,16 +114,28 @@
  * Implements hook_form_alter()
  * Example of using foundation sexy buttons
  */
-//function STARTER_form_alter(&$form, &$form_state, $form_id) {
+//function ctk_form_alter(&$form, &$form_state, $form_id) {
 //  // Sexy submit buttons
 //  if (!empty($form['actions']) && !empty($form['actions']['submit'])) {
-//    $form['actions']['submit']['#attributes'] = array('class' => array('primary', 'button', 'radius'));
+//    $classes = (is_array($form['actions']['submit']['#attributes']['class']))
+//      ? $form['actions']['submit']['#attributes']['class']
+//      : array();
+//    $classes = array_merge($classes, array('secondary', 'button', 'radius'));
+//    $form['actions']['submit']['#attributes']['class'] = $classes;
 //  }
 //}
 
-// Sexy preview buttons
-//function STARTER_form_comment_form_alter(&$form, &$form_state) {
-//  $form['actions']['preview']['#attributes']['class'][] = array('class' => array('secondary', 'button', 'radius'));
+/**
+ * Implements hook_form_FORM_ID_alter()
+ * Example of using foundation sexy buttons on comment form
+ */
+//function ctk_form_comment_form_alter(&$form, &$form_state) {
+  // Sexy preview buttons
+//  $classes = (is_array($form['actions']['preview']['#attributes']['class']))
+//    ? $form['actions']['preview']['#attributes']['class']
+//    : array();
+//  $classes = array_merge($classes, array('secondary', 'button', 'radius'));
+//  $form['actions']['preview']['#attributes']['class'] = $classes;
 //}
 
 
@@ -164,30 +176,30 @@ function THEMENAME_preprocess_views_view_fields(&$variables) {
 /**
  * Implements hook_css_alter().
  */
-function ctk_css_alter(&$css) {
-  // Always remove base theme CSS.
-  $theme_path = drupal_get_path('theme', 'zurb_foundation');
-
-  foreach($css as $path => $values) {
-    if(strpos($path, $theme_path) === 0) {
-      unset($css[$path]);
-    }
-  }
-}
+//function ctk_css_alter(&$css) {
+//  // Always remove base theme CSS.
+//  $theme_path = drupal_get_path('theme', 'zurb_foundation');
+//
+//  foreach($css as $path => $values) {
+//    if(strpos($path, $theme_path) === 0) {
+//      unset($css[$path]);
+//    }
+//  }
+//}
 
 /**
  * Implements hook_js_alter().
  */
-function ctk_js_alter(&$js) {
-  // Always remove base theme JS.
-  $theme_path = drupal_get_path('theme', 'zurb_foundation');
-
-  foreach($js as $path => $values) {
-    if(strpos($path, $theme_path) === 0) {
-      unset($js[$path]);
-    }
-  }
-}
+//function ctk_js_alter(&$js) {
+//  // Always remove base theme JS.
+//  $theme_path = drupal_get_path('theme', 'zurb_foundation');
+//
+//  foreach($js as $path => $values) {
+//    if(strpos($path, $theme_path) === 0) {
+//      unset($js[$path]);
+//    }
+//  }
+//}
 
 function ctk_prevnext($nid) {
   $prev = db_query("SELECT nid, title FROM {node} WHERE nid < :nid AND type != 'page' AND status = 1 ORDER BY nid DESC LIMIT 1", array(':nid' => $nid));
@@ -216,10 +228,11 @@ function ctk_prevnext($nid) {
     }
   }
 
-  $output = '<ul id="prevnext_nodes" class="no-bullet">';
-  if($prev_link) $output .= '<li class="large-6 columns"><span class="fui-arrow-left"></span> ' . t('Previous article: ') . $prev_link .'</li>';
-  if($next_link) $output .= '<li class="large-6 columns">' . t('Next article: ') . $next_link .' <span class="fui-arrow-right"></span></li>';
-  $output .= '</ul>';
+  $output = '<div id="prevnext_nodes" class="row">';
+  if($prev_link) $output .= '<div class="large-6 columns"><i class="fi-arrow-left"></i> ' . t('Previous article: ') . $prev_link .'</div>';
+  if($next_link) $output .= '<div class="large-6 columns">' . t('Next article: ') . $next_link .' <i class="fi-arrow-right"></i></div>';
+  $output .= '</div>';
 
   return $output;
 }
+
