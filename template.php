@@ -237,10 +237,12 @@ function ctk_prevnext($nid) {
 }
 
 function ctk_form_alter(&$form, &$form_state, $form_id) {
-//  drupal_set_message('<pre>' . print_r($form, TRUE) . '</pre>');
+  // drupal_set_message('<pre>' . print_r($form, TRUE) . '</pre>');
 
+  $form['keys_1']['#attributes']['placeholder'] = t('Поиск по сайту');
   $form['keys_2']['#attributes']['placeholder'] = t('Поиск по сайту');
   $form['keys_2']['#attributes']['class'][] = 'hide-for-touch';
+  $form['submit_1']['#attributes']['class'][] = 'element-invisible';
   $form['submit_2']['#attributes']['class'][] = 'element-invisible';
 }
 
