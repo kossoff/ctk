@@ -207,15 +207,15 @@
 <!--/.page -->
 
 <!--.l-footer-->
-<footer class="l-footer" role="contentinfo">
-  <?php if (!empty($page['footer'])): ?>
-    <div class="row footer">
-      <div class="large-12 columns">
-        <?php print render($page['footer']); ?>
-      </div>
+<?php if (!empty($page['footer'])): ?>
+  <div class="row footer l-footer">
+    <div class="large-12 columns">
+      <?php print render($page['footer']); ?>
     </div>
-  <?php endif; ?>
+  </div>
+<?php endif; ?>
 
+<footer class="l-footer" role="contentinfo">
   <?php if ($site_name) :?>
     <div class="row">
       <div class="copyright large-12 columns">
