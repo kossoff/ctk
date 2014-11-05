@@ -112,17 +112,21 @@
   <?php endif; ?>
 
   <?php if ($page): ?>
-    <div id="prevnext" class="row" data-equalizer>
+    <div id="prevnext_nodes" class="row" data-equalizer>
       <?php
         $prev = prev_next_link($node->nid, "prev");
         $next = prev_next_link($node->nid, "next");
       ?>
-      <a class="button large-6 columns" href="<?php print $prev[url];?>" data-equalizer-watch>
-        Предыдущая статья:<br /><?php print $prev[title]; ?>
-      </a>
-      <a class="button large-6 columns" href="<?php print $next[url];?>" data-equalizer-watch>
-        Следующая статья:<br /><?php print $next[title]; ?>
-      </a>
+      <div class="large-6 columns">
+        <a class="button expand" href="<?php print $prev[url];?>" data-equalizer-watch>
+          Предыдущая статья:<br /><?php print $prev[title]; ?>
+        </a>
+      </div>
+      <div class="large-6 columns">
+        <a class="button expand" href="<?php print $next[url];?>" data-equalizer-watch>
+          Следующая статья:<br /><?php print $next[title]; ?>
+        </a>
+      </div>
     </div>
   <?php endif; ?>
 
