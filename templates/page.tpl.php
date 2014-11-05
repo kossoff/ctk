@@ -208,9 +208,11 @@
 
 <!--.l-footer-->
 <?php if (!empty($page['footer'])): ?>
-  <div class="row footer l-footer">
-    <div class="large-12 columns">
-      <?php print render($page['footer']); ?>
+  <div class="footer l-footer">
+    <div class="row">
+      <div class="large-12 columns">
+        <?php print render($page['footer']); ?>
+      </div>
     </div>
   </div>
 <?php endif; ?>
