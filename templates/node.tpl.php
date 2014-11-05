@@ -118,12 +118,12 @@
         $next = prev_next_link($node->nid, "next");
       ?>
       <div class="large-6 columns">
-        <a class="button expand" href="<?php print $prev[url];?>" data-equalizer-watch>
+        <a class="button column" href="<?php print $prev[url];?>" data-equalizer-watch>
           Предыдущая статья:<br /><?php print $prev[title]; ?>
         </a>
       </div>
       <div class="large-6 columns">
-        <a class="button expand" href="<?php print $next[url];?>" data-equalizer-watch>
+        <a class="button column" href="<?php print $next[url];?>" data-equalizer-watch>
           Следующая статья:<br /><?php print $next[title]; ?>
         </a>
       </div>
