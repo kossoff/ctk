@@ -208,7 +208,7 @@ function ctk_field__taxonomy_term_reference($variables) {
   $output .= ($variables['element']['#label_display'] == 'inline') ? '<ul class="links inline inline-list">' : '<ul class="links">';
   // Render the label, if it's not hidden.
   if (!$variables['label_hidden']) {
-    $output .= '<label class="field-label">' . $variables['label'] . ': </label>';
+    $output .= '<label class="field-label">' . $variables['label'] . '</label>';
   }
   foreach ($variables['items'] as $delta => $item) {
     $output .= '<li class="label radius secondary taxonomy-term-reference-' . $delta . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</li>';
