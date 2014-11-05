@@ -201,6 +201,24 @@ function THEMENAME_preprocess_views_view_fields(&$variables) {
 //  }
 //}
 
+function ctk_field__taxonomy_term_reference($variables) {
+  $output = '';
+
+  // Render the items.
+  $output .= ($variables['element']['#label_display'] == 'inline') ? '<ul class="links inline inline-list">' : '<ul class="links">';
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    $output .= '<label class="field-label">' . $variables['label'] . ': </label>';
+  }
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<li class="label radius secondary taxonomy-term-reference-' . $delta . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</li>';
+  }
+  $output .= '</ul>';
+  // Render the top-level DIV.
+  $output = '<div class="' . $variables['classes'] . (!in_array('clearfix', $variables['classes_array']) ? ' clearfix' : '') . '">' . $output . '</div>';
+  return $output;
+}
+
 function ctk_prevnext($nid) {
   $prev = db_query("SELECT nid, title FROM {node} WHERE nid < :nid AND type != 'page' AND status = 1 ORDER BY nid DESC LIMIT 1", array(':nid' => $nid));
   $next = db_query("SELECT nid, title FROM {node} WHERE nid > :nid AND type != 'page' AND status = 1 ORDER BY nid ASC LIMIT 1", array(':nid' => $nid));

@@ -94,7 +94,7 @@
     <?php endif; ?>
 
     <?php if ($breadcrumb): ?>
-      <section class="l-breadcrumbs">
+      <section class="l-breadcrumbs hide-for-small">
         <div class="row">
           <div class="large-12 columns">
             <?php print $breadcrumb; ?>

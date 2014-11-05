@@ -92,11 +92,6 @@ body {
     }
   }
 
-  .field-name-field-image {
-      float: left;
-      margin-right: 1em;
-   }
-
   .field-name-field-tags {
       ul {
          // @extend .inline-list !optional;
@@ -127,8 +122,24 @@ body {
   .l-main {
     padding-top: 1rem;
 
+    .field-name-field-original-link {
+      @extend .panel;
+      @extend .callout;
+    }
+
     .image {
-      @extend .left;
+      margin-right: 1rem;
+    }
+
+    ul.links {
+      li.label {
+        a {
+          &,
+          &:hover {
+            color: white;
+          }
+        }
+      }
     }
   }
 
@@ -145,12 +156,6 @@ body {
        margin: 1em;
     }
    }
-}
-
-article {
-  ul, ol, dl {
-    list-style-position: inside !important;
-  }
 }
 
 a {

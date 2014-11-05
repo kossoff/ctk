@@ -97,11 +97,14 @@
     hide($content['links']);
     hide($content['field_tags']);
     hide($content['field_image']);
-    print render($content['field_image']);
+    print render($content['field_original_link']);
   ?>
 
   <div class="content">
-    <?php print render($content); ?>
+    <?php
+      print render($content['field_image']);
+      print render($content);
+    ?>
   </div>
 
   <?php if (!empty($content['field_tags']) && !$is_front): ?>
