@@ -14,7 +14,7 @@
  *   - $content['right']: Content in the right column.
  */
 ?>
-<div class="row" <?php !empty($css_id) ? print 'id="' . $css_id . '"' : ''; ?>>
+<div <?php !empty($css_id) ? print 'id="' . $css_id . '"' : ''; ?>>
   <div class="large-8 columns">
     <?php print $content['left']; ?>
   </div>
