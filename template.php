@@ -219,39 +219,44 @@ function ctk_field__taxonomy_term_reference($variables) {
   return $output;
 }
 
-function ctk_prevnext($nid) {
-  $prev = db_query("SELECT nid, title FROM {node} WHERE nid < :nid AND type != 'page' AND status = 1 ORDER BY nid DESC LIMIT 1", array(':nid' => $nid));
-  $next = db_query("SELECT nid, title FROM {node} WHERE nid > :nid AND type != 'page' AND status = 1 ORDER BY nid ASC LIMIT 1", array(':nid' => $nid));
+function prev_next_link ( $nid, $type ) {
+  $link = array (
+          'url' => '',
+          'title' => 'Нет',
+          );
 
-  $prev_link = FALSE;
-  $next_link = FALSE;
+  switch ($type) {
+    case 'next':
+      $result = db_query("SELECT nid, title FROM {node} WHERE nid > :nid AND type != 'page' AND status = 1 ORDER BY nid ASC LIMIT 1", array(':nid' => $nid));
+      break;
 
-  foreach ($prev as $prev_node) {
-    $prev_alias = drupal_lookup_path('alias', 'node' . $prev_node->nid);
+    case 'prev':
+      $result = db_query("SELECT nid, title FROM {node} WHERE nid < :nid AND type != 'page' AND status = 1 ORDER BY nid DESC LIMIT 1", array(':nid' => $nid));
+      break;
 
-    if($prev_alias) {
-      $prev_link = "<a href='/" . $prev_alias . "' title='previous'>" .$prev_node->title. "</a>";
-    } else {
-      $prev_link = "<a href='/node/" . $prev_node->nid . "' title='previous'>" .$prev_node->title. "</a>";
+    default:
+      return FALSE;
+  }
+
+  foreach ($result as $result_node) {
+    if ( $result_node ) {
+      $link_alias = drupal_lookup_path('alias', 'node/' . $result_node->nid);
+
+      if ( $link_alias ) {
+        $link = array (
+          'url' => '/' . $link_alias,
+          'title' => $result_node->title,
+          );
+      } else {
+        $link = array (
+          'url' => '/node/' . $result_node->nid,
+          'title' => $result_node->title,
+          );
+      }
     }
   }
 
-  foreach ($next as $next_node) {
-    $next_alias = drupal_lookup_path('alias', 'node/' . $next_node->nid);
-
-    if($next_alias) {
-      $next_link = '<a href="/' . $next_alias . '" title="next">' .$next_node->title. '</a>';
-    } else {
-      $next_link = "<a href='/node/" . $next_node->nid . "' title='next'>" . $next_node->title . "</a>";
-    }
-  }
-
-  $output = '<div id="prevnext_nodes" class="row">';
-  if($prev_link) $output .= '<div class="large-6 columns"><i class="fi-arrow-left"></i> ' . t('Previous article: ') . $prev_link .'</div>';
-  if($next_link) $output .= '<div class="large-6 columns">' . t('Next article: ') . $next_link .' <i class="fi-arrow-right"></i></div>';
-  $output .= '</div>';
-
-  return $output;
+  return $link;
 }
 
 function ctk_form_alter(&$form, &$form_state, $form_id) {

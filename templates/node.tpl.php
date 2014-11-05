@@ -111,6 +111,21 @@
     <?php print render($content['field_tags']) ?>
   <?php endif; ?>
 
+  <?php if ($page): ?>
+    <div id="prevnext" class="row" data-equalizer>
+      <?php
+        $prev = prev_next_link($node->nid, "prev");
+        $next = prev_next_link($node->nid, "next");
+      ?>
+      <a class="button large-6 columns" href="<?php print $prev[url];?>" data-equalizer-watch>
+        Предыдущая статья:<br /><?php print $prev[title]; ?>
+      </a>
+      <a class="button large-6 columns" href="<?php print $next[url];?>" data-equalizer-watch>
+        Следующая статья:<br /><?php print $next[title]; ?>
+      </a>
+    </div>
+  <?php endif; ?>
+
   <?php print render($content['links']); ?>
   <?php print render($content['comments']); ?>
 
