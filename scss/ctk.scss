@@ -119,6 +119,12 @@ body {
     }
   }
 
+  .date-created {
+    background:scale-color($primary-color, $lightness: 93%);
+    padding: .5rem 0;
+    text-align: center;
+  }
+
   .l-main {
     padding-top: 1rem;
 

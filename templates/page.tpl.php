@@ -135,6 +135,13 @@
           </div>
         </section>
       <?php endif; ?>
+      <?php if ( $node ): ?>
+        <section class="date-created">
+          <?php
+            print number_to_roman (date( 'd', $node->created)) . '.' . number_to_roman (date( 'n', $node->created)) . '.' . number_to_roman (date( 'Y', $node->created));
+          ?>
+        </section>
+      <?php endif; ?>
 
       <div class="row">
         <div class="<?php print $main_grid; ?> main columns">
