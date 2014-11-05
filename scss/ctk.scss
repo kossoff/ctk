@@ -126,6 +126,10 @@ body {
 
   .l-main {
     padding-top: 1rem;
+
+    .image {
+      @extend .left;
+    }
   }
 
   .footer {
