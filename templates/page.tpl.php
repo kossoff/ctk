@@ -238,8 +238,10 @@
 <footer class="l-footer" role="contentinfo">
   <?php if ($site_name) :?>
     <div class="row">
-      <div class="copyright large-12 columns">
-        <a href="http://creativecommons.org/licenses/by/3.0/deed.ru" rel="license"><img src="http://i.creativecommons.org/l/by/3.0/80x15.png" style="border-width:0" alt="Лицензия Creative Commons"></a> 2007 &ndash; <?php print date('Y') ?> Kossoff.ru <?php print '(' . check_plain($site_name) . ') ' . t('Some rights reserved.'); ?>
+      <div class="large-12 columns">
+        <div class="copyright">
+          <a href="http://creativecommons.org/licenses/by/3.0/deed.ru" rel="license"><img src="http://i.creativecommons.org/l/by/3.0/80x15.png" style="border-width:0" alt="Лицензия Creative Commons"></a> 2007 &ndash; <?php print date('Y') ?> Kossoff.ru <?php print '(' . check_plain($site_name) . ') ' . t('Some rights reserved.'); ?>
+        </div>
       </div>
     </div>
   <?php endif; ?>
