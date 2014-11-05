@@ -209,8 +209,10 @@
 <!--.l-footer-->
 <footer class="l-footer" role="contentinfo">
   <?php if (!empty($page['footer'])): ?>
-    <div class="footer large-12 columns">
-      <?php print render($page['footer']); ?>
+    <div class="row footer">
+      <div class="large-12 columns">
+        <?php print render($page['footer']); ?>
+      </div>
     </div>
   <?php endif; ?>
 
