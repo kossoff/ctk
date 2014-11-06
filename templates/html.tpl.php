@@ -50,6 +50,8 @@
 <head>
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
+  <link href='http://fonts.googleapis.com/css?family=EB+Garamond&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   <?php print $styles; ?>
   <?php print $scripts; ?>
   <!--[if lt IE 9]>
