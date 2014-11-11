@@ -103,16 +103,6 @@
       </section>
     <?php endif; ?>
 
-    <?php if ($messages && !$zurb_foundation_messages_modal): ?>
-      <!--/.l-messages -->
-      <section class="l-messages row">
-        <div class="large-12 columns">
-          <?php if ($messages): print $messages; endif; ?>
-        </div>
-      </section>
-      <!--/.l-messages -->
-    <?php endif; ?>
-
     <?php if (!empty($page['help'])): ?>
       <!--/.l-help -->
       <section class="l-help row">
@@ -141,6 +131,16 @@
             print number_to_roman (date( 'd', $node->created)) . '.' . number_to_roman (date( 'n', $node->created)) . '.' . number_to_roman (date( 'Y', $node->created));
           ?>
         </section>
+      <?php endif; ?>
+
+      <?php if ($messages && !$zurb_foundation_messages_modal): ?>
+        <!--/.l-messages -->
+        <section class="l-messages row">
+          <div class="large-12 columns">
+            <?php if ($messages): print $messages; endif; ?>
+          </div>
+        </section>
+        <!--/.l-messages -->
       <?php endif; ?>
 
       <div class="row">
