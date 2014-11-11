@@ -127,9 +127,11 @@
       <?php endif; ?>
       <?php if ( $node ): ?>
         <section class="date-created">
-          <?php
-            print number_to_roman (date( 'd', $node->created)) . '.' . number_to_roman (date( 'n', $node->created)) . '.' . number_to_roman (date( 'Y', $node->created));
-          ?>
+          <time>
+            <?php
+              print number_to_roman (date( 'd', $node->created)) . '.' . number_to_roman (date( 'n', $node->created)) . '.' . number_to_roman (date( 'Y', $node->created));
+            ?>
+          </time>
         </section>
       <?php endif; ?>
 

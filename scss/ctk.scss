@@ -116,14 +116,20 @@ body {
 
     h1 {
       text-align: center;
+      margin: 2rem 0;
     }
   }
 
-  .date-created {
-    background:scale-color($primary-color, $lightness: 93%);
+  time {
     font-family: $header-font-family;
+    line-height: 1.1;
+    font-size: 1.1rem;
+  }
+
+  section.date-created {
+    background:scale-color($primary-color, $lightness: 93%);
     font-size:rem-calc(18);
-    padding: .5rem 0;
+    padding: 1rem 0;
     text-align: center;
   }
 
