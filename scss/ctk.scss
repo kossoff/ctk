@@ -130,6 +130,30 @@ body {
   .l-main {
     padding-top: 1rem;
 
+    .pane-last-publictaions {
+      background: $clouds;
+
+      h2.pane-title {
+        background: $wet-asphalt;
+        color: white;
+        font-size: 1.7em;
+        padding: .5rem 1rem;
+      }
+
+      .view-last-publictaions {
+        padding: 1rem;
+
+        time {
+          font-size: .8rem;
+        }
+
+        h4 {
+          font-size: 1.222rem;
+          line-height: 1.222rem;
+        }
+      }
+    }
+
     .field-name-field-original-link {
       @extend .panel;
       @extend .callout;

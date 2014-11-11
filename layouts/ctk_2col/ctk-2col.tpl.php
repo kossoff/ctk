@@ -18,7 +18,7 @@
   <div class="large-8 columns">
     <?php print $content['left']; ?>
   </div>
-  <div class="large-4 columns panel callout">
+  <div class="large-4 columns">
     <?php print $content['right']; ?>
   </div>
 </div>
