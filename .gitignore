@@ -4,3 +4,6 @@ robots.txt
 .sass-cache
 ctk.sublime*
 Gemfile.lock
+node_modules
+.bin
+bower_components
