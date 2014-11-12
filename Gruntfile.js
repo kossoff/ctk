@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
   "use strict";
 
-  var theme_name = 'ctk';
+  var theme_name = 'app';
 
   var global_vars = {
     theme_name: theme_name,

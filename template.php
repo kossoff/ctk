@@ -308,14 +308,3 @@ function ctk_form_alter(&$form, &$form_state, $form_id) {
   $form['submit_1']['#attributes']['class'][] = 'element-invisible';
   $form['submit_2']['#attributes']['class'][] = 'element-invisible';
 }
-
-function ctk_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
-  $form['search_api_views_fulltext'] = array(
-    '#type' => 'textfield',
-    //'#title' => t('Textbox title'),
-    '#attributes' => array(
-      'placeholder' => t('Например: Математика'),
-      'class' => array('ctools-auto-submit-exclude'),
-    ),
-  );
-}
