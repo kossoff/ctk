@@ -55,8 +55,13 @@
   <?php print $styles; ?>
   <?php print $scripts; ?>
   <!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <!--[if !IE 7]>
+    <style type="text/css">
+      .wrapper-main {display:table;height:100%}
+    </style>
+  <![endif]-->
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <div class="skip-link">
