@@ -304,7 +304,7 @@ function ctk_form_alter(&$form, &$form_state, $form_id) {
 
   $form['keys_1']['#attributes']['placeholder'] = t('Поиск по сайту');
   $form['keys_2']['#attributes']['placeholder'] = t('Поиск по сайту');
-  $form['keys_2']['#attributes']['class'][] = 'hide-for-touch';
+  $form['keys_2']['#attributes']['class'][] = '';
   $form['submit_1']['#attributes']['class'][] = 'element-invisible';
   $form['submit_2']['#attributes']['class'][] = 'element-invisible';
 }
